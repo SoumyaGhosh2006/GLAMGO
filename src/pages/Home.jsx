@@ -13,7 +13,7 @@ function Home() {
             }}
           >
             <h1>
-              Where <span>Nature</span> Meets <span>Style</span>
+              Built for Comfort.<br/>Designed<br/> for Everyday.
             </h1>
 
             <p className="hero-subtitle">
