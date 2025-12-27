@@ -1,0 +1,48 @@
+.navbar {
+  background-color: #e6d7bd !important;
+  box-shadow: none !important;
+  padding: 10px 0;
+  border-bottom: 1px solid #333;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Adjust these dimensions as needed for your image */
+  width: 150px; 
+  height: 50px;
+  /* Temporary styling to show where the div is */
+  border: 1px dashed #333; 
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 18px;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: #000;
+}
+
+.explore-btn {
+  background-color: #006d77 !important;
+  color: white !important;
+  text-transform: none !important;
+  font-size: 16px !important;
+  padding: 8px 30px !important;
+  border-radius: 5px !important;
+}
+
+.explore-btn:hover {
+  background-color: #005660 !important;
+}
