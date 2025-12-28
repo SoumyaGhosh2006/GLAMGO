@@ -10,32 +10,43 @@ function Home() {
             className="hero-content"
             sx={{
               textAlign: { xs: "center", md: "left" },
+              maxWidth: 520,
             }}
           >
+            {/* Eyebrow text (small but powerful) */}
+            <span className="hero-eyebrow">
+              Everyday Essentials
+            </span>
+
             <h1>
-              Built for Comfort.<br/>Designed<br/> for Everyday.
+              Built for Comfort.<br />
+              Designed for<br />
+              <span>Everyday Wear.</span>
             </h1>
 
             <p className="hero-subtitle">
-              A global bridge between agro excellence, sustainable goods,
-              and modern fashion.
+              Premium vests, round-neck tees, bermuda shorts, and track pants
+              crafted for comfort, movement, and modern living.
             </p>
 
             <Stack
               direction={{ xs: "column", sm: "row" }}
               spacing={2}
               justifyContent={{ xs: "center", md: "flex-start" }}
+              sx={{ marginTop: 4 }}
             >
-              <Button variant="contained" className="hero-btn">
-                Agro
+              <Button
+                variant="contained"
+                className="hero-btn primary"
+              >
+                Shop Collection
               </Button>
 
-              <Button variant="contained" className="hero-btn primary">
-                Fashion
-              </Button>
-
-              <Button variant="contained" className="hero-btn">
-                Bags
+              <Button
+                variant="outlined"
+                className="hero-btn outline"
+              >
+                Explore Essentials
               </Button>
             </Stack>
           </Box>
