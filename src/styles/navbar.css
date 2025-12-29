@@ -1,8 +1,8 @@
 .navbar {
-  background-color: #e6d7bd !important;
+  background-color: #efe4cc !important;
   box-shadow: none !important;
-  padding: 10px 0;
-  border-bottom: 1px solid #333;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .logo-container {
@@ -10,16 +10,15 @@
   align-items: center;
   justify-content: center;
   /* Adjust these dimensions as needed for your image */
-  width: 150px; 
-  height: 50px;
+  height: 60px;
   /* Temporary styling to show where the div is */
-  border: 1px dashed #333; 
 }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 30px;
+.logo {
+  height: 60px;      /* perfect for navbar */
+  width: auto;
+  position: left;
+  object-fit: contain;
 }
 
 .nav-link {
@@ -34,13 +33,29 @@
   color: #000;
 }
 
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background-color: #006d77;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+
 .explore-btn {
   background-color: #006d77 !important;
   color: white !important;
   text-transform: none !important;
   font-size: 16px !important;
-  padding: 8px 30px !important;
-  border-radius: 5px !important;
+  padding: 10px 34px !important;
+  border-radius: 8px !important;
 }
 
 .explore-btn:hover {

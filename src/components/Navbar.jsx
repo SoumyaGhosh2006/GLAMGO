@@ -1,16 +1,18 @@
 import { AppBar, Toolbar, Typography, Button, Box, Container } from '@mui/material';
 import '../styles/navbar.css';
+import logo from "../assets/logo.png";
+
 
 function Navbar() {
   return (
     <AppBar position="static" className="navbar">
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" >
         <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
           
           {/* Logo / Brand Name */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <div className="logo-container">
-                {/* PUT IMAGE HERE */}
+                <img src={logo} alt="GlamGo Logo" className="logo" />
             </div>
           </Box>
 
