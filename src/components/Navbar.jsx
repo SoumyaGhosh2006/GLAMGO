@@ -6,7 +6,7 @@ import logo from "../assets/logo.png";
 function Navbar() {
   return (
     <AppBar position="static" className="navbar">
-      <Container maxWidth="lg" >
+      <Container maxWidth="lg" className='navbar-container'>
         <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
           
           {/* Logo / Brand Name */}
