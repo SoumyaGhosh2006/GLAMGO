@@ -92,7 +92,7 @@ function Home() {
             breathable fabrics, modern fits, and durability that moves with you.
           </p>
 
-          <a href="/glamcare" className="essentials-btn">
+          <a href="/essentials" className="essentials-btn">
             Explore Essentials
           </a>
         </div>

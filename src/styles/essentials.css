@@ -1,0 +1,55 @@
+.essentials {
+  padding: 80px 20px;
+  background-color: #f6efdc;
+  min-height: 100vh;
+}
+
+.essentials-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.essentials-header h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+  color: #1f2d2b;
+}
+
+.essentials-header p {
+  font-size: 18px;
+  color: #555;
+}
+
+.essentials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+.card img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  font-size: 20px;
+  color: #006d77;
+}
