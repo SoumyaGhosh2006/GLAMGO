@@ -1,55 +1,82 @@
-.essentials {
-  padding: 80px 20px;
-  background-color: #f6efdc;
-  min-height: 100vh;
+.essentials-page {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
+/* Header */
 .essentials-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .essentials-header h1 {
   font-size: 42px;
   margin-bottom: 10px;
-  color: #1f2d2b;
 }
 
 .essentials-header p {
-  font-size: 18px;
   color: #555;
+  font-size: 18px;
 }
 
+/* Filters */
+.essentials-filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.essentials-filters button {
+  padding: 10px 22px;
+  border-radius: 20px;
+  border: 1px solid #006d77;
+  background: transparent;
+  color: #006d77;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.essentials-filters .active,
+.essentials-filters button:hover {
+  background: #006d77;
+  color: white;
+}
+
+/* Grid */
 .essentials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 40px;
-  max-width: 1100px;
-  margin: auto;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
 }
 
-.card {
-  background: white;
-  border-radius: 14px;
-  padding: 30px 20px;
+/* Card */
+.product-card {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
-}
-
-.card img {
+.product-card img {
   width: 100%;
-  max-height: 180px;
+  max-height: 220px;
   object-fit: contain;
-  margin-bottom: 20px;
 }
 
-.card h3 {
-  font-size: 20px;
-  color: #006d77;
+.product-card h3 {
+  margin: 15px 0 5px;
+}
+
+.product-card span {
+  font-size: 14px;
+  color: #666;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
