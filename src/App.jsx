@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import Essentials from "./pages/Essentials";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
+
 
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
         <Route path="/essentials" element={<Essentials />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:id" element={<ProductDetails />} />
-    
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
   );
