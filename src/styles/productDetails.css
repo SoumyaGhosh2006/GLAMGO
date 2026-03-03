@@ -1,59 +1,99 @@
 .product-details {
-  padding: 80px 20px;
-  max-width: 1200px;
-  margin: auto;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 58px 26px 86px;
 }
 
 .product-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
+  gap: 34px;
+  align-items: start;
 }
 
 .product-image img {
   width: 100%;
-  border-radius: 16px;
-  background: #f6f3ee;
-  padding: 20px;
+  border-radius: 24px;
+  border: 1px solid rgba(98, 79, 45, 0.14);
+  background: linear-gradient(170deg, #f4ebd8 0%, #faf5eb 100%);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.product-info {
+  border-radius: 24px;
+  background: var(--surface-strong);
+  border: 1px solid rgba(100, 80, 47, 0.14);
+  box-shadow: var(--shadow-soft);
+  padding: 30px 28px;
 }
 
 .product-info h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
+  font-size: clamp(1.9rem, 2.8vw, 2.7rem);
+  margin-bottom: 8px;
 }
 
 .product-info h2 {
-  color: #006d77;
-  margin-bottom: 20px;
+  color: var(--accent);
+  margin-bottom: 16px;
+  font-size: 1.45rem;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-weight: 800;
 }
 
 .description {
-  margin-bottom: 10px;
-  color: #555;
+  margin-bottom: 14px;
+  color: var(--text-muted);
 }
 
 .fabric {
-  margin-bottom: 30px;
+  margin-bottom: 26px;
+  color: #4b4337;
+}
+
+.sizes h4 {
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-soft);
 }
 
 .size-options {
   display: flex;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 12px;
   flex-wrap: wrap;
 }
 
 .size-chip {
-  padding: 8px 18px;
-  border-radius: 8px;
-  border: 1px solid #006d77;
-  background: transparent;
-  color: #006d77;
-  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 109, 119, 0.24);
+  background: rgba(0, 109, 119, 0.08);
+  color: var(--accent-dark);
+  font-weight: 700;
+  font-size: 13px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .product-container {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .product-details {
+    padding: 40px 16px 64px;
+  }
+
+  .product-image img {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .product-info {
+    padding: 22px 18px;
+    border-radius: 18px;
   }
 }

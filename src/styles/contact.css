@@ -1,0 +1,98 @@
+.contact-page {
+  padding: 56px 26px 82px;
+}
+
+.contact-shell {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 26px;
+}
+
+.contact-copy,
+.contact-card {
+  border-radius: 24px;
+  border: 1px solid rgba(98, 79, 45, 0.14);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-soft);
+}
+
+.contact-copy {
+  padding: 34px 32px;
+}
+
+.contact-copy span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.contact-copy h1 {
+  margin: 10px 0 14px;
+  font-size: clamp(2rem, 3.1vw, 2.9rem);
+}
+
+.contact-copy p {
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.contact-points {
+  margin-top: 24px;
+  display: grid;
+  gap: 8px;
+}
+
+.contact-points p {
+  margin: 0;
+  color: #443a2d;
+}
+
+.contact-card {
+  padding: 30px 28px;
+  background:
+    radial-gradient(circle at top right, rgba(0, 109, 119, 0.14) 0%, rgba(0, 109, 119, 0) 48%),
+    #f8f2e8;
+}
+
+.contact-card h3 {
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+}
+
+.contact-card p {
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.contact-card a {
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, #006d77 0%, #0a818d 100%);
+  padding: 10px 16px;
+  display: inline-flex;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(0, 109, 119, 0.25);
+}
+
+@media (max-width: 900px) {
+  .contact-shell {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .contact-page {
+    padding: 40px 16px 62px;
+  }
+
+  .contact-copy,
+  .contact-card {
+    border-radius: 18px;
+    padding: 24px 18px;
+  }
+}

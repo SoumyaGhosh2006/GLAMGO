@@ -1,4 +1,4 @@
-import { Container, Box, Button, Stack } from "@mui/material";
+import { Link } from "react-router-dom";
 import "../styles/home.css";
 
 import vestImg from "../assets/collections/vest.png";
@@ -7,94 +7,124 @@ import bermudaImg from "../assets/collections/bermuda.png";
 import trackpantsImg from "../assets/collections/trackpants.png";
 
 function Home() {
-  return (
-    <main className="home">
-      {/* ================= HERO SECTION ================= */}
-      <section className="hero">
-        <Container maxWidth="lg">
-          <Box
-            className="hero-content"
-            sx={{
-              textAlign: { xs: "center", md: "left" },
-              maxWidth: 520,
-            }}
-          >
-            <span className="hero-eyebrow">Everyday Essentials</span>
+  const collections = [
+    {
+      name: "Vests",
+      subtitle: "Breathable all-day layers",
+      image: vestImg,
+    },
+    {
+      name: "Round Neck Tees",
+      subtitle: "Soft cotton structure",
+      image: tshirtImg,
+    },
+    {
+      name: "Bermuda Shorts",
+      subtitle: "Relaxed fit for movement",
+      image: bermudaImg,
+    },
+    {
+      name: "Track Pants",
+      subtitle: "Clean silhouette, easy stretch",
+      image: trackpantsImg,
+    },
+  ];
 
+  return (
+    <main className="home-page">
+      <section className="home-hero">
+        <div className="home-shell hero-shell">
+          <div className="hero-content">
+            <span className="hero-eyebrow">Everyday Essentials</span>
             <h1>
               Built for Comfort.
               <br />
-              Designed for
-              <br />
-              <span>Everyday Wear.</span>
+              Styled for <span>Calm Confidence.</span>
             </h1>
-
             <p className="hero-subtitle">
-              Premium vests, round-neck tees, bermuda shorts, and track pants
-              crafted for comfort, movement, and modern living.
+              Premium dailywear crafted with breathable fabrics, modern fits,
+              and finishes that feel soft from morning to night.
             </p>
-
-            <Stack
-              direction={{ xs: "column", sm: "row" }}
-              spacing={2}
-              justifyContent={{ xs: "center", md: "flex-start" }}
-              sx={{ marginTop: 4 }}
-            >
-              <Button variant="contained" className="hero-btn primary">
+            <div className="hero-actions">
+              <Link to="/essentials" className="hero-btn primary">
                 Shop Collection
-              </Button>
-
-              <Button variant="outlined" className="hero-btn outline">
+              </Link>
+              <Link to="/essentials" className="hero-btn outline">
                 Explore Essentials
-              </Button>
-            </Stack>
-          </Box>
-        </Container>
-      </section>
+              </Link>
+            </div>
+          </div>
 
-      {/* ================= SHOP COLLECTION ================= */}
-      <section className="shop-collection">
-        <h2>Shop Collection</h2>
-
-        <div className="collection-grid">
-          <a href="/glamcare" className="collection-card">
-            <img src={vestImg} alt="Vests" />
-            <div className="card-overlay">View Collection</div>
-            <h3>Vests</h3>
-          </a>
-
-          <a href="/glamcare" className="collection-card">
-            <img src={tshirtImg} alt="Round Neck Tees" />
-            <div className="card-overlay">View Collection</div>
-            <h3>Round Neck Tees</h3>
-          </a>
-
-          <a href="/glamcare" className="collection-card">
-            <img src={bermudaImg} alt="Bermuda Shorts" />
-            <div className="card-overlay">View Collection</div>
-            <h3>Bermuda Shorts</h3>
-          </a>
-
-          <a href="/glamcare" className="collection-card">
-            <img src={trackpantsImg} alt="Track Pants" />
-            <div className="card-overlay">View Collection</div>
-            <h3>Track Pants</h3>
-          </a>
+          <aside className="hero-feature">
+            <p className="feature-kicker">CURATED DROP</p>
+            <h3>Everyday Core Set</h3>
+            <p>
+              Vests, tees, bermudas, and track pants designed as one versatile
+              wardrobe foundation.
+            </p>
+            <div className="feature-tags">
+              <span>Combed Cotton</span>
+              <span>Relaxed Fit</span>
+              <span>All-Day Wear</span>
+            </div>
+            <Link to="/essentials" className="feature-link">
+              View Essentials
+            </Link>
+          </aside>
         </div>
       </section>
 
-      {/* ================= EXPLORE ESSENTIALS ================= */}
-      <section className="explore-essentials">
-        <div className="essentials-content">
-          <h2>Explore Essentials</h2>
-          <p>
-            Designed for everyday comfort, our essentials are crafted with
-            breathable fabrics, modern fits, and durability that moves with you.
-          </p>
+      <section className="home-collections">
+        <div className="home-shell">
+          <div className="section-head">
+            <span>Shop Collection</span>
+            <h2>Essential Styles for Every Day</h2>
+          </div>
 
-          <a href="/essentials" className="essentials-btn">
+          <div className="collection-grid">
+            {collections.map((item) => (
+              <Link to="/essentials" key={item.name} className="collection-card">
+                <div className="collection-image-wrap">
+                  <img src={item.image} alt={item.name} />
+                </div>
+                <div className="collection-body">
+                  <h3>{item.name}</h3>
+                  <p>{item.subtitle}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="home-comfort-strip">
+        <div className="home-shell comfort-shell">
+          <div className="comfort-content">
+            <span>Soft. Refined. Everyday.</span>
+            <h2>Comfort that still feels premium.</h2>
+            <p>
+              We focus on fine construction and wearable silhouettes so your
+              essentials stay polished without feeling heavy or formal.
+            </p>
+          </div>
+          <ul className="comfort-points">
+            <li>Breathable materials for all-weather wear</li>
+            <li>Modern cuts designed for natural movement</li>
+            <li>Durable stitching and long-lasting softness</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="home-cta">
+        <div className="home-shell cta-shell">
+          <h2>Ready to upgrade your everyday wardrobe?</h2>
+          <p>
+            Explore the full essentials collection and find your comfort-first
+            fit.
+          </p>
+          <Link to="/essentials" className="essentials-btn">
             Explore Essentials
-          </a>
+          </Link>
         </div>
       </section>
     </main>

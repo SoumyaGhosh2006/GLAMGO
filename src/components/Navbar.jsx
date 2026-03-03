@@ -11,7 +11,7 @@ function Navbar() {
       <Container maxWidth="lg" className="navbar-container">
         <Toolbar disableGutters className="navbar-toolbar">
           <Box className="navbar-brand">
-            <Link to="/">
+            <Link to="/" className="brand-link">
               <div className="logo-container">
                 <img src={logo} alt="GlamGo Logo" className="logo" />
               </div>
@@ -19,21 +19,23 @@ function Navbar() {
           </Box>
 
           <Box className="navbar-links">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-            <Link to="/essentials" className="nav-link">
-              Essentials
-            </Link>
-            <Link to="/contact" className="nav-link">
-              Contact
-            </Link>
+            <Box className="nav-menu-shell">
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
+              <Link to="/essentials" className="nav-link">
+                Essentials
+              </Link>
+              <Link to="/contact" className="nav-link">
+                Contact
+              </Link>
 
-            <Button className="explore-btn">Explore</Button>
+              <Button className="explore-btn">Explore</Button>
+            </Box>
           </Box>
 
           <Box className="navbar-mobile">
-            <Button sx={{ color: "#333" }}>Menu</Button>
+            <Button className="mobile-menu-btn">Menu</Button>
           </Box>
         </Toolbar>
       </Container>
