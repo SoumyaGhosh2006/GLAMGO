@@ -46,18 +46,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 78px;
-  padding: 8px 12px;
-  border-radius: 14px;
-  background-color: #0b1116;
-  box-shadow: 0 8px 18px rgba(11, 17, 22, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 150px;
+  height: 150px;
+  padding: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f7f1e3 62%, #eadab8 100%);
+  box-shadow: 0 10px 22px rgba(44, 38, 28, 0.18);
+  border: 1px solid rgba(65, 54, 32, 0.14);
+  overflow: hidden;
 }
 
 .logo {
-  height: 62px;
-  width: auto;
-  object-fit: contain;
+  width: 117%;
+  height: 117%;
+  object-fit: cover;
+  border-radius: 10%;
+  display: block;
 }
 
 .navbar-links {
@@ -152,13 +156,14 @@
   }
 
   .logo-container {
-    height: 66px;
-    padding: 6px 10px;
-    border-radius: 12px;
+    width: 68px;
+    height: 68px;
+    padding: 6px;
   }
 
   .logo {
-    height: 52px;
+    width: 100%;
+    height: 100%;
   }
 
   .purchase-btn {
