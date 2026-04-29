@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import "../styles/home.css";
 
-import vestImg from "../assets/collections/vest.png";
-import tshirtImg from "../assets/collections/tshirt.png";
-import bermudaImg from "../assets/collections/bermuda.png";
-import trackpantsImg from "../assets/collections/trackpants.png";
+import vestImg from "../assets/collections/Vest.png";
+import tshirtImg from "../assets/collections/TShirt.png";
+import bermudaImg from "../assets/collections/Buddy Mercerised Printed Bermuda.png";
+import trackpantsImg from "../assets/collections/Track Pant.png";
 
 function Home() {
   const collections = [
