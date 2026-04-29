@@ -89,7 +89,7 @@ export const products = [
     name: "Classic Slips",
     price: 379,
     image: slipsImg,
-    category: "Innerwear",
+    category: "Girls Innerwear",
     description: "An everyday slip style made for close comfort and flexibility.",
     fabric: "Cotton Rib",
     sizes: ["S", "M", "L", "XL"],

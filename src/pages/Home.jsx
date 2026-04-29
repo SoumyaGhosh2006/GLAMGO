@@ -5,6 +5,8 @@ import vestImg from "../assets/collections/Vest.png";
 import tshirtImg from "../assets/collections/TShirt.png";
 import bermudaImg from "../assets/collections/Buddy Mercerised Printed Bermuda.png";
 import trackpantsImg from "../assets/collections/Track Pant.png";
+import boxerImg from "../assets/collections/Boxer.png";
+import rosyPantyImg from "../assets/collections/Rosy Panty.jpeg";
 import whyChooseUsImg from "../assets/why_choose_us.png";
 
 function Home() {
@@ -46,21 +48,37 @@ function Home() {
       name: "Vests",
       subtitle: "Breathable all-day layers",
       image: vestImg,
+      target: "/essentials#vests",
     },
     {
       name: "Round Neck Tees",
       subtitle: "Soft cotton structure",
       image: tshirtImg,
+      target: "/essentials#t-shirts",
     },
     {
       name: "Bermuda Shorts",
       subtitle: "Relaxed fit for movement",
       image: bermudaImg,
+      target: "/essentials#bermuda",
     },
     {
       name: "Track Pants",
       subtitle: "Clean silhouette, easy stretch",
       image: trackpantsImg,
+      target: "/essentials#track-pants",
+    },
+    {
+      name: "Men's Innerwear",
+      subtitle: "Core support styles for everyday wear",
+      image: boxerImg,
+      target: "/essentials#mens-innerwear",
+    },
+    {
+      name: "Girls Innerwear",
+      subtitle: "Soft essentials designed for daily comfort",
+      image: rosyPantyImg,
+      target: "/essentials#girls-innerwear",
     },
   ];
 
@@ -112,13 +130,13 @@ function Home() {
       <section className="home-collections">
         <div className="home-shell">
           <div className="section-head">
-            <span>Featured Collection</span>
-            <h2>Comfort-first categories with premium appeal</h2>
+            <span>Product Classification</span>
+            <h2>Browse by section and jump straight to the right range</h2>
           </div>
 
           <div className="collection-grid">
             {collections.map((item) => (
-              <Link to="/essentials" key={item.name} className="collection-card">
+              <Link to={item.target} key={item.name} className="collection-card">
                 <div className="collection-image-wrap">
                   <img src={item.image} alt={item.name} />
                 </div>
