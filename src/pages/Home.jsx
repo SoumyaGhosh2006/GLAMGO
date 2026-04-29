@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "../styles/home.css";
-import { companyStory, qualityHighlights } from "../data/companyInfo";
 
 import vestImg from "../assets/collections/Vest.png";
 import tshirtImg from "../assets/collections/TShirt.png";
@@ -9,6 +8,39 @@ import trackpantsImg from "../assets/collections/Track Pant.png";
 import whyChooseUsImg from "../assets/why_choose_us.png";
 
 function Home() {
+  const aboutTags = [
+    "International Quality",
+    "Premium Comfort",
+    "Fashion-Forward",
+  ];
+
+  const aboutPillars = [
+    {
+      number: "01",
+      title: "Craft",
+      description:
+        "Every stitch is supervised. From fabric selection to final finish, our quality team oversees each stage - not as a checkbox, but as a commitment.",
+    },
+    {
+      number: "02",
+      title: "Feel",
+      description:
+        "Comfort isn't a feature - it's the foundation. We engineer softness, breathability, and fit before we even think about aesthetics.",
+    },
+    {
+      number: "03",
+      title: "Value",
+      description:
+        "World-class doesn't have to mean unaffordable. We make premium accessible - without cutting corners or lowering standards.",
+    },
+  ];
+
+  const aboutStats = [
+    { value: "3", label: "Core categories" },
+    { value: "100%", label: "Quality supervised" },
+    { value: "\u221E", label: "Style possibilities" },
+  ];
+
   const collections = [
     {
       name: "Vests",
@@ -136,23 +168,68 @@ function Home() {
         <div className="home-shell about-shell">
           <div className="about-copy">
             <div className="section-head section-head-left">
-              <span>About GLAMGO</span>
-              <h2>Crafted for fashion-conscious markets worldwide.</h2>
+              <span>Premium Apparel - Worldwide</span>
+              <h2>Wear what you mean.</h2>
             </div>
 
-            <div className="about-story">
-              {companyStory.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+            <p className="about-intro">
+              GLAMGO builds clothes for people who refuse to choose between
+              looking sharp and feeling free. Premium undergarments,
+              performance sportswear, and tailored denim - crafted to
+              world-class standards, priced for the real world.
+            </p>
+
+            <div className="about-tags">
+              {aboutTags.map((tag) => (
+                <span key={tag}>{tag}</span>
               ))}
             </div>
 
-            <div className="about-points">
-              {qualityHighlights.map((point) => (
-                <div key={point} className="about-point">
-                  {point}
+            <div className="about-pillars">
+              {aboutPillars.map((pillar) => (
+                <div key={pillar.number} className="about-pillar">
+                  <span className="about-pillar-number">{pillar.number}</span>
+                  <h3>{pillar.title}</h3>
+                  <p>{pillar.description}</p>
                 </div>
               ))}
             </div>
+
+            <blockquote className="about-quote">
+              "Most brands ask you to pay more for quality. We ask you to
+              expect both - and then we deliver."
+            </blockquote>
+
+            <p className="about-story">
+              At GLAMGO, quality policy isn't a document on a wall. It's the
+              culture of our floor. Our expert quality controllers are embedded
+              at every stage of production - because we know that trust is
+              built in the details your customers never even notice. The seam
+              that holds. The color that doesn't fade. The waistband that
+              doesn't roll. That's GLAMGO.
+            </p>
+
+            <div className="about-stats">
+              {aboutStats.map((stat) => (
+                <div key={stat.label} className="about-stat">
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                </div>
+              ))}
+            </div>
+
+            <p className="about-closing">
+              Style that fits your life - not just your size.
+            </p>
+
+            <Link to="/essentials" className="about-link">
+              Explore the range &#8599;
+            </Link>
+
+            <p className="about-signoff">
+              <strong>Glamgo</strong>
+              <span>Style meets comfort - uncompromised.</span>
+            </p>
           </div>
 
           <div className="about-visual">
