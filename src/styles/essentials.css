@@ -21,6 +21,21 @@
   color: var(--text-muted);
 }
 
+.products-helper,
+.products-state {
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.products-helper {
+  font-size: 0.94rem;
+}
+
+.products-state {
+  text-align: center;
+  padding: 34px 0;
+}
+
 .classification-nav {
   display: flex;
   flex-wrap: wrap;
@@ -136,6 +151,14 @@
   font-size: 0.95rem;
   margin-bottom: 14px;
   flex: 1;
+}
+
+.product-price {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--accent);
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-size: 1.02rem;
 }
 
 .product-card span {

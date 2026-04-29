@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
-import { products } from "../data/products";
 import "../styles/essentials.css";
 
-function Essentials() {
+function Essentials({
+  products = [],
+  isLoading = false,
+  productError = null,
+  productSource = "loading",
+}) {
   const productSections = [
     {
       id: "vests",
@@ -56,8 +60,24 @@ function Essentials() {
           Explore the collection by classification and jump directly into the
           section you need.
         </p>
+        {productError && products.length ? (
+          <p className="products-helper">
+            Showing saved products while the live catalog reconnects.
+          </p>
+        ) : null}
+        {productSource === "missing-config" ? (
+          <p className="products-helper">
+            Showing local catalog until Supabase environment values are available.
+          </p>
+        ) : null}
       </section>
 
+      {!products.length ? (
+        <p className="products-state">
+          {isLoading ? "Loading products..." : "No products available right now."}
+        </p>
+      ) : (
+        <>
       <section className="classification-nav" aria-label="Product classifications">
         {productSections.map((section) => (
           <a key={section.id} href={`#${section.id}`} className="classification-chip">
@@ -90,6 +110,7 @@ function Essentials() {
                     <div className="product-card-body">
                       <h3>{product.name}</h3>
                       <p>{product.description}</p>
+                      <strong className="product-price">₹{product.price}</strong>
                       <span>{product.fabric}</span>
                     </div>
 
@@ -105,6 +126,8 @@ function Essentials() {
           );
         })}
       </div>
+        </>
+      )}
     </main>
   );
 }

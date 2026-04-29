@@ -9,7 +9,7 @@ import boxerImg from "../assets/collections/Boxer.png";
 import rosyPantyImg from "../assets/collections/Rosy Panty.jpeg";
 import whyChooseUsImg from "../assets/why_choose_us.png";
 
-function Home() {
+function Home({ products = [], isLoading = false }) {
   const aboutTags = [
     "International Quality",
     "Premium Comfort",
@@ -49,38 +49,62 @@ function Home() {
       subtitle: "Breathable all-day layers",
       image: vestImg,
       target: "/essentials#vests",
+      categories: ["Vests"],
     },
     {
       name: "Round Neck Tees",
       subtitle: "Soft cotton structure",
       image: tshirtImg,
       target: "/essentials#t-shirts",
+      categories: ["T-Shirts"],
     },
     {
       name: "Bermuda Shorts",
       subtitle: "Relaxed fit for movement",
       image: bermudaImg,
       target: "/essentials#bermuda",
+      categories: ["Bermuda"],
     },
     {
       name: "Track Pants",
       subtitle: "Clean silhouette, easy stretch",
       image: trackpantsImg,
       target: "/essentials#track-pants",
+      categories: ["Track Pants"],
     },
     {
       name: "Men's Innerwear",
       subtitle: "Core support styles for everyday wear",
       image: boxerImg,
       target: "/essentials#mens-innerwear",
+      categories: ["Innerwear"],
     },
     {
       name: "Girls Innerwear",
       subtitle: "Soft essentials designed for daily comfort",
       image: rosyPantyImg,
       target: "/essentials#girls-innerwear",
+      categories: ["Panties", "Girls Innerwear"],
     },
   ];
+
+  const collectionCards = collections.map((collection) => {
+    const matchingProducts = products.filter((product) =>
+      collection.categories.includes(product.category)
+    );
+    const lowestPrice = Math.min(
+      ...matchingProducts
+        .map((product) => Number(product.price))
+        .filter((price) => Number.isFinite(price) && price > 0)
+    );
+    const featuredProduct = matchingProducts[0];
+
+    return {
+      ...collection,
+      image: featuredProduct?.image || collection.image,
+      price: Number.isFinite(lowestPrice) ? lowestPrice : null,
+    };
+  });
 
   return (
     <main className="home-page">
@@ -134,19 +158,26 @@ function Home() {
             <h2>Browse by section and jump straight to the right range</h2>
           </div>
 
-          <div className="collection-grid">
-            {collections.map((item) => (
-              <Link to={item.target} key={item.name} className="collection-card">
-                <div className="collection-image-wrap">
-                  <img src={item.image} alt={item.name} />
-                </div>
-                <div className="collection-body">
-                  <h3>{item.name}</h3>
-                  <p>{item.subtitle}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          {!products.length && isLoading ? (
+            <p className="products-state">Loading products...</p>
+          ) : (
+            <div className="collection-grid">
+              {collectionCards.map((item) => (
+                <Link to={item.target} key={item.name} className="collection-card">
+                  <div className="collection-image-wrap">
+                    <img src={item.image} alt={item.name} />
+                  </div>
+                  <div className="collection-body">
+                    <h3>{item.name}</h3>
+                    <p>{item.subtitle}</p>
+                    {item.price ? (
+                      <strong className="collection-price">From ₹{item.price}</strong>
+                    ) : null}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

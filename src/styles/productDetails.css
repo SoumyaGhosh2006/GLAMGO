@@ -4,6 +4,12 @@
   padding: 58px 26px 86px;
 }
 
+.product-state {
+  text-align: center;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
 .product-container {
   display: grid;
   grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
@@ -74,6 +80,11 @@
   color: var(--accent-dark);
   font-weight: 700;
   font-size: 13px;
+}
+
+.size-fallback {
+  margin-top: 10px;
+  color: var(--text-muted);
 }
 
 .purchase-panel {

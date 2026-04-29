@@ -231,6 +231,20 @@
   color: var(--text-muted);
 }
 
+.collection-price {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--accent-dark);
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+}
+
+.products-state {
+  text-align: center;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
 .home-comfort-strip {
   padding: 30px 0 30px;
 }
