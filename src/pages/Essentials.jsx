@@ -14,15 +14,23 @@ function Essentials() {
 
       <section className="essentials-grid">
         {products.map((product) => (
-          <Link
-            to={`/product/${product.id}`}
-            key={product.id}
-            className="product-card"
-          >
-            <img src={product.image} alt={product.name} />
-            <h3>{product.name}</h3>
-            <span>{product.fabric}</span>
-          </Link>
+          <article key={product.id} className="product-card">
+            <Link to={`/product/${product.id}`} className="product-card-link">
+              <img src={product.image} alt={product.name} />
+            </Link>
+
+            <div className="product-card-body">
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+              <span>{product.fabric}</span>
+            </div>
+
+            <div className="product-card-actions">
+              <Link to={`/product/${product.id}`} className="product-action detail">
+                View Details
+              </Link>
+            </div>
+          </article>
         ))}
       </section>
     </main>

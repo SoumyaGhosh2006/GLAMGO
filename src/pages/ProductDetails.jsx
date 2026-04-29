@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { products } from "../data/products";
 import "../styles/productDetails.css";
 
@@ -39,6 +39,19 @@ function ProductDetails() {
                   {size}
                 </span>
               ))}
+            </div>
+          </div>
+
+          <div className="purchase-panel">
+            <h3>Purchase this product</h3>
+            <p>
+              Continue to the purchase page for contact details, the write to
+              us form, and the live office location.
+            </p>
+            <div className="purchase-panel-actions">
+              <Link to={`/purchase?product=${encodeURIComponent(product.name)}`}>
+                Purchase?
+              </Link>
             </div>
           </div>
         </div>

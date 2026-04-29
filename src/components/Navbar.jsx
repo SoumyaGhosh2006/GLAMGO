@@ -23,6 +23,9 @@ function Navbar() {
               <Link to="/" className="nav-link">
                 Home
               </Link>
+              <Link to="/#about" className="nav-link">
+                About
+              </Link>
               <Link to="/essentials" className="nav-link">
                 Essentials
               </Link>
@@ -30,12 +33,10 @@ function Navbar() {
                 Contact
               </Link>
 
-              <Button className="explore-btn">Explore</Button>
+              <Button component={Link} to="/purchase" className="purchase-btn">
+                Purchase?
+              </Button>
             </Box>
-          </Box>
-
-          <Box className="navbar-mobile">
-            <Button className="mobile-menu-btn">Menu</Button>
           </Box>
         </Toolbar>
       </Container>

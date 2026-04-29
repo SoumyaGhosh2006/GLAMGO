@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import "../styles/home.css";
+import { companyStory, qualityHighlights } from "../data/companyInfo";
 
 import vestImg from "../assets/collections/Vest.png";
 import tshirtImg from "../assets/collections/TShirt.png";
 import bermudaImg from "../assets/collections/Buddy Mercerised Printed Bermuda.png";
 import trackpantsImg from "../assets/collections/Track Pant.png";
+import whyChooseUsImg from "../assets/why_choose_us.png";
 
 function Home() {
   const collections = [
@@ -35,40 +37,41 @@ function Home() {
       <section className="home-hero">
         <div className="home-shell hero-shell">
           <div className="hero-content">
-            <span className="hero-eyebrow">Everyday Essentials</span>
+            <span className="hero-eyebrow">International Quality Standards</span>
             <h1>
-              Built for Comfort.
+              Premium undergarments,
               <br />
-              Styled for <span>Calm Confidence.</span>
+              sportswear, and <span>jeans built to perform.</span>
             </h1>
             <p className="hero-subtitle">
-              Premium dailywear crafted with breathable fabrics, modern fits,
-              and finishes that feel soft from morning to night.
+              GLAMGO blends superior craftsmanship, fashion-forward design, and
+              comfort-first construction to serve modern lifestyles with
+              dependable quality.
             </p>
             <div className="hero-actions">
               <Link to="/essentials" className="hero-btn primary">
-                Shop Collection
+                Explore Collection
               </Link>
-              <Link to="/essentials" className="hero-btn outline">
-                Explore Essentials
+              <Link to="/#about" className="hero-btn outline">
+                Why Choose Us
               </Link>
             </div>
           </div>
 
           <aside className="hero-feature">
-            <p className="feature-kicker">CURATED DROP</p>
-            <h3>Everyday Core Set</h3>
+            <p className="feature-kicker">GLAMGO PROMISE</p>
+            <h3>Style meets comfort without compromise.</h3>
             <p>
-              Vests, tees, bermudas, and track pants designed as one versatile
-              wardrobe foundation.
+              Every product is shaped by rigorous quality control, trend-aware
+              design, and pricing that keeps premium manufacturing competitive.
             </p>
             <div className="feature-tags">
-              <span>Combed Cotton</span>
-              <span>Relaxed Fit</span>
-              <span>All-Day Wear</span>
+              <span>Expert QC Team</span>
+              <span>Premium Finish</span>
+              <span>Modern Patterns</span>
             </div>
-            <Link to="/essentials" className="feature-link">
-              View Essentials
+            <Link to="/purchase" className="feature-link">
+              Go to Purchase Page
             </Link>
           </aside>
         </div>
@@ -77,8 +80,8 @@ function Home() {
       <section className="home-collections">
         <div className="home-shell">
           <div className="section-head">
-            <span>Shop Collection</span>
-            <h2>Essential Styles for Every Day</h2>
+            <span>Featured Collection</span>
+            <h2>Comfort-first categories with premium appeal</h2>
           </div>
 
           <div className="collection-grid">
@@ -100,31 +103,63 @@ function Home() {
       <section className="home-comfort-strip">
         <div className="home-shell comfort-shell">
           <div className="comfort-content">
-            <span>Soft. Refined. Everyday.</span>
-            <h2>Comfort that still feels premium.</h2>
+            <span>Quality-First Manufacturing</span>
+            <h2>Every detail is checked before it reaches your market.</h2>
             <p>
-              We focus on fine construction and wearable silhouettes so your
-              essentials stay polished without feeling heavy or formal.
+              From fabric selection to final stitching, our structured process
+              keeps comfort, consistency, and finish aligned with premium
+              expectations.
             </p>
           </div>
           <ul className="comfort-points">
-            <li>Breathable materials for all-weather wear</li>
-            <li>Modern cuts designed for natural movement</li>
-            <li>Durable stitching and long-lasting softness</li>
+            <li>Fabric selection aligned to durability and all-day comfort</li>
+            <li>Vibrant shades, stylish silhouettes, and trend-aware patterns</li>
+            <li>Expert supervision at every stage of production</li>
           </ul>
         </div>
       </section>
 
       <section className="home-cta">
         <div className="home-shell cta-shell">
-          <h2>Ready to upgrade your everyday wardrobe?</h2>
+          <h2>Looking to purchase from GLAMGO?</h2>
           <p>
-            Explore the full essentials collection and find your comfort-first
-            fit.
+            Browse the collection, then connect with our team directly for
+            purchase inquiries, product discussions, and business coordination.
           </p>
-          <Link to="/essentials" className="essentials-btn">
-            Explore Essentials
+          <Link to="/purchase" className="essentials-btn">
+            Go to Purchase Page
           </Link>
+        </div>
+      </section>
+
+      <section className="home-about" id="about">
+        <div className="home-shell about-shell">
+          <div className="about-copy">
+            <div className="section-head section-head-left">
+              <span>About GLAMGO</span>
+              <h2>Crafted for fashion-conscious markets worldwide.</h2>
+            </div>
+
+            <div className="about-story">
+              {companyStory.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+
+            <div className="about-points">
+              {qualityHighlights.map((point) => (
+                <div key={point} className="about-point">
+                  {point}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="about-visual">
+            <div className="about-image-panel">
+              <img src={whyChooseUsImg} alt="Why choose GLAMGO" />
+            </div>
+          </div>
         </div>
       </section>
     </main>

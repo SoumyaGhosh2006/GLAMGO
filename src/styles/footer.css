@@ -46,6 +46,7 @@
   text-align: center;
   color: #6a604f;
   font-size: 0.86rem;
+  padding: 0 18px;
 }
 
 @media (max-width: 700px) {
