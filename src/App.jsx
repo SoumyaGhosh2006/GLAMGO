@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Essentials from "./pages/Essentials";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
-import { getProducts } from "./lib/getProducts";
+import { getProducts, subscribeToProductUpdates } from "./lib/getProducts";
 
 function App() {
   const [productState, setProductState] = useState({
@@ -19,14 +19,13 @@ function App() {
 
   useEffect(() => {
     let isActive = true;
+    let subscription = null;
 
     async function loadProducts() {
       try {
         const result = await getProducts();
 
-        if (!isActive) {
-          return;
-        }
+        if (!isActive) return;
 
         setProductState({
           products: result.products,
@@ -34,10 +33,20 @@ function App() {
           error: result.error,
           source: result.source,
         });
+
+        // 🔄 REALTIME LISTENER
+        subscription = subscribeToProductUpdates((updatedProduct) => {
+          console.log("LIVE UPDATE RECEIVED");
+
+          setProductState((prev) => ({
+            ...prev,
+            products: prev.products.map((p) =>
+              p.id === updatedProduct.id ? { ...p, ...updatedProduct } : p,
+            ),
+          }));
+        });
       } catch (error) {
-        if (!isActive) {
-          return;
-        }
+        if (!isActive) return;
 
         setProductState({
           products: [],
@@ -52,6 +61,11 @@ function App() {
 
     return () => {
       isActive = false;
+
+      // 🧹 cleanup realtime subscription
+      if (subscription) {
+        subscription.unsubscribe();
+      }
     };
   }, []);
 
