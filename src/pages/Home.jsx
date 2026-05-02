@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import "../styles/home.css";
 
@@ -90,12 +91,12 @@ function Home({ products = [], isLoading = false }) {
 
   const collectionCards = collections.map((collection) => {
     const matchingProducts = products.filter((product) =>
-      collection.categories.includes(product.category)
+      collection.categories.includes(product.category),
     );
     const lowestPrice = Math.min(
       ...matchingProducts
         .map((product) => Number(product.price))
-        .filter((price) => Number.isFinite(price) && price > 0)
+        .filter((price) => Number.isFinite(price) && price > 0),
     );
     const featuredProduct = matchingProducts[0];
 
@@ -108,10 +109,28 @@ function Home({ products = [], isLoading = false }) {
 
   return (
     <main className="home-page">
+      <Helmet>
+        <title>GLAMGO | Premium Innerwear & Essentials</title>
+        <meta
+          name="description"
+          content="Premium undergarments, sportswear, and essentials by GLAMGO."
+        />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="GLAMGO Premium Wear" />
+        <meta
+          property="og:description"
+          content="Premium undergarments & essentials."
+        />
+        <meta property="og:image" content="/preview.jpg" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <section className="home-hero">
         <div className="home-shell hero-shell">
           <div className="hero-content">
-            <span className="hero-eyebrow">International Quality Standards</span>
+            <span className="hero-eyebrow">
+              International Quality Standards
+            </span>
             <h1>
               Premium undergarments,
               <br />
@@ -163,7 +182,11 @@ function Home({ products = [], isLoading = false }) {
           ) : (
             <div className="collection-grid">
               {collectionCards.map((item) => (
-                <Link to={item.target} key={item.name} className="collection-card">
+                <Link
+                  to={item.target}
+                  key={item.name}
+                  className="collection-card"
+                >
                   <div className="collection-image-wrap">
                     <img src={item.image} alt={item.name} />
                   </div>
@@ -171,7 +194,9 @@ function Home({ products = [], isLoading = false }) {
                     <h3>{item.name}</h3>
                     <p>{item.subtitle}</p>
                     {item.price ? (
-                      <strong className="collection-price">From ₹{item.price}</strong>
+                      <strong className="collection-price">
+                        From ₹{item.price}
+                      </strong>
                     ) : null}
                   </div>
                 </Link>
@@ -194,7 +219,9 @@ function Home({ products = [], isLoading = false }) {
           </div>
           <ul className="comfort-points">
             <li>Fabric selection aligned to durability and all-day comfort</li>
-            <li>Vibrant shades, stylish silhouettes, and trend-aware patterns</li>
+            <li>
+              Vibrant shades, stylish silhouettes, and trend-aware patterns
+            </li>
             <li>Expert supervision at every stage of production</li>
           </ul>
         </div>
@@ -223,9 +250,9 @@ function Home({ products = [], isLoading = false }) {
 
             <p className="about-intro">
               GLAMGO builds clothes for people who refuse to choose between
-              looking sharp and feeling free. Premium undergarments,
-              performance sportswear, and tailored denim - crafted to
-              world-class standards, priced for the real world.
+              looking sharp and feeling free. Premium undergarments, performance
+              sportswear, and tailored denim - crafted to world-class standards,
+              priced for the real world.
             </p>
 
             <div className="about-tags">
@@ -245,17 +272,17 @@ function Home({ products = [], isLoading = false }) {
             </div>
 
             <blockquote className="about-quote">
-              "Most brands ask you to pay more for quality. We ask you to
-              expect both - and then we deliver."
+              "Most brands ask you to pay more for quality. We ask you to expect
+              both - and then we deliver."
             </blockquote>
 
             <p className="about-story">
               At GLAMGO, quality policy isn't a document on a wall. It's the
               culture of our floor. Our expert quality controllers are embedded
-              at every stage of production - because we know that trust is
-              built in the details your customers never even notice. The seam
-              that holds. The color that doesn't fade. The waistband that
-              doesn't roll. That's GLAMGO.
+              at every stage of production - because we know that trust is built
+              in the details your customers never even notice. The seam that
+              holds. The color that doesn't fade. The waistband that doesn't
+              roll. That's GLAMGO.
             </p>
 
             <div className="about-stats">

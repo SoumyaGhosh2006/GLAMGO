@@ -98,7 +98,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/purchase" element={<Contact />} />
         <Route
-          path="/product/:id"
+          path="/product/:slug"
           element={
             <ProductDetails
               products={productState.products}

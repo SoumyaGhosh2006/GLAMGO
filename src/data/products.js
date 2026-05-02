@@ -154,4 +154,15 @@ export const products = [
     fabric: "Soft Stretch Knit",
     sizes: ["M", "L", "XL"],
   },
-];
+
+  {
+    id: "Slips-001",
+    name: "Slips",
+    price: 329,
+    image: slipsImg,
+    category: "Panties",
+    description: "A lightweight panty style designed for comfort throughout the day.",
+    fabric: "Soft Stretch Knit",
+    sizes: ["M", "L", "XL"],
+  }
+];  
