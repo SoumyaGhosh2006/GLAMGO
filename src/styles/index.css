@@ -49,3 +49,78 @@ h4 {
 a {
   color: inherit;
 }
+
+.app-fallback,
+.not-found-page {
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+  padding: 48px 20px;
+}
+
+.route-loading {
+  min-height: 50vh;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+.app-fallback > div,
+.not-found-card {
+  width: min(620px, 100%);
+  padding: 34px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.app-fallback p,
+.not-found-card span {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.app-fallback h1,
+.not-found-card h1 {
+  margin: 10px 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.app-fallback span,
+.not-found-card p {
+  display: block;
+  color: var(--text-muted);
+}
+
+.app-fallback a,
+.not-found-actions a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 22px;
+  padding: 11px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #fff;
+  background: var(--accent);
+  font-weight: 800;
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.not-found-actions a + a {
+  color: var(--text-main);
+  background: rgba(0, 109, 119, 0.08);
+  border: 1px solid rgba(0, 109, 119, 0.16);
+}

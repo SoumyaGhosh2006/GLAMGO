@@ -1,25 +1,22 @@
-import { AppBar, Toolbar, Button, Box, Container } from "@mui/material";
-
+import { Link } from "react-router-dom";
 import "../styles/navbar.css";
 import logo from "../assets/logo1.png";
 
-import { Link } from "react-router-dom";
-
 function Navbar() {
   return (
-    <AppBar position="static" className="navbar">
-      <Container maxWidth="lg" className="navbar-container">
-        <Toolbar disableGutters className="navbar-toolbar">
-          <Box className="navbar-brand">
-            <Link to="/" className="brand-link">
+    <header className="navbar">
+      <div className="navbar-container">
+        <nav className="navbar-toolbar" aria-label="Primary navigation">
+          <div className="navbar-brand">
+            <Link to="/" className="brand-link" aria-label="GLAMGO home">
               <div className="logo-container">
                 <img src={logo} alt="GlamGo Logo" className="logo" />
               </div>
             </Link>
-          </Box>
+          </div>
 
-          <Box className="navbar-links">
-            <Box className="nav-menu-shell">
+          <div className="navbar-links">
+            <div className="nav-menu-shell">
               <Link to="/" className="nav-link">
                 Home
               </Link>
@@ -32,15 +29,14 @@ function Navbar() {
               <Link to="/contact" className="nav-link">
                 Contact
               </Link>
-
-              <Button component={Link} to="/purchase" className="purchase-btn">
-                Purchase?
-              </Button>
-            </Box>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+              <Link to="/purchase" className="purchase-btn">
+                Purchase
+              </Link>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
   );
 }
 

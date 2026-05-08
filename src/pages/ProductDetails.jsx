@@ -1,99 +1,98 @@
 import { Link, useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
+import { absoluteUrl, canonicalUrl, formatPrice } from "../config/site";
 import "../styles/productDetails.css";
 
 function ProductDetails({ products = [], isLoading = false }) {
   const { slug } = useParams();
 
-  // 🔥 Handle loading state properly
   if (isLoading) {
     return (
       <main className="product-details">
+        <Seo
+          title="Loading Product | GLAMGO"
+          description="Loading product details from the GLAMGO collection."
+          path={`/product/${slug || ""}`}
+          noindex
+        />
         <p className="product-state">Loading product...</p>
       </main>
     );
   }
 
-  // 🔥 Find product by slug (safe check)
-  const product = products.find((p) => p.slug === slug);
+  const product = products.find((item) => item.slug === slug);
 
-  // ❌ If still not found AFTER loading
   if (!product) {
     return (
       <main className="product-details">
-        <h2 style={{ padding: "60px", textAlign: "center" }}>
-          Product Not Found
-        </h2>
+        <Seo
+          title="Product Not Found | GLAMGO"
+          description="The GLAMGO product you are looking for could not be found."
+          path={`/product/${slug || ""}`}
+          noindex
+        />
+        <section className="product-missing">
+          <h1>Product not found</h1>
+          <p>
+            This product may be temporarily unavailable. You can browse the
+            full collection or contact the team for help.
+          </p>
+          <div className="product-missing-actions">
+            <Link to="/essentials">Browse Collection</Link>
+            <Link to="/contact">Contact GLAMGO</Link>
+          </div>
+        </section>
       </main>
     );
   }
 
+  const productUrl = canonicalUrl(`/product/${product.slug}`);
+  const productDescription = `${product.name} by GLAMGO. ${product.description}`;
+
   return (
     <main className="product-details">
-      <Helmet>
-        <title>{product.name} | GLAMGO</title>
-
-        <meta
-          name="description"
-          content={`${product.name} for ₹${product.price}. Premium comfort and quality by GLAMGO.`}
-        />
-
-        <meta property="og:title" content={`${product.name} | GLAMGO`} />
-
-        <meta
-          property="og:description"
-          content={`${product.name} available for ₹${product.price}.`}
-        />
-
-        <meta property="og:image" content={product.image} />
-
-        <meta property="og:type" content="product" />
-
-        {/* 🔥 STRUCTURED DATA */}
+      <Seo
+        title={`${product.name} | GLAMGO`}
+        description={productDescription}
+        path={`/product/${product.slug}`}
+        image={product.image}
+        type="product"
+      >
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org/",
             "@type": "Product",
-
             name: product.name,
-
-            image: [product.image],
-
+            image: [absoluteUrl(product.image)],
             description: product.description,
-
             brand: {
               "@type": "Brand",
               name: "GLAMGO",
             },
-
             offers: {
               "@type": "Offer",
-
               priceCurrency: "INR",
-
-              price: product.price,
-
+              price: String(product.price),
               availability: "https://schema.org/InStock",
-
-              url: `https://your-site.netlify.app/product/${product.slug}`,
+              url: productUrl,
             },
           })}
         </script>
-      </Helmet>
+      </Seo>
 
       <div className="product-container">
         <div className="product-image">
           <img
             src={product.image}
             alt={product.name}
-            loading="lazy"
+            loading="eager"
             decoding="async"
           />
         </div>
 
         <div className="product-info">
           <h1>{product.name}</h1>
-          <h2>₹{product.price}</h2>
+          <h2>{formatPrice(product.price)}</h2>
 
           <p className="description">{product.description}</p>
 
@@ -127,10 +126,8 @@ function ProductDetails({ products = [], isLoading = false }) {
             </p>
 
             <div className="purchase-panel-actions">
-              <Link
-                to={`/purchase?product=${encodeURIComponent(product.name)}`}
-              >
-                Purchase?
+              <Link to={`/purchase?product=${encodeURIComponent(product.name)}`}>
+                Purchase
               </Link>
             </div>
           </div>

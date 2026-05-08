@@ -1,13 +1,20 @@
-import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 import ScrollToHash from "./components/ScrollToHash";
-import Home from "./pages/Home";
-import Essentials from "./pages/Essentials";
-import Contact from "./pages/Contact";
-import ProductDetails from "./pages/ProductDetails";
-import { getProducts, subscribeToProductUpdates } from "./lib/getProducts";
+import {
+  getProducts,
+  normalizeProducts,
+  subscribeToProductUpdates,
+} from "./lib/getProducts";
+
+const Contact = lazy(() => import("./pages/Contact"));
+const Essentials = lazy(() => import("./pages/Essentials"));
+const Home = lazy(() => import("./pages/Home"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const ProductDetails = lazy(() => import("./pages/ProductDetails"));
 
 function App() {
   const [productState, setProductState] = useState({
@@ -34,15 +41,10 @@ function App() {
           source: result.source,
         });
 
-        // 🔄 REALTIME LISTENER
-        subscription = subscribeToProductUpdates((updatedProduct) => {
-          console.log("LIVE UPDATE RECEIVED");
-
+        subscription = subscribeToProductUpdates((payload) => {
           setProductState((prev) => ({
             ...prev,
-            products: prev.products.map((p) =>
-              p.id === updatedProduct.id ? { ...p, ...updatedProduct } : p,
-            ),
+            products: mergeRealtimeProduct(prev.products, payload),
           }));
         });
       } catch (error) {
@@ -62,7 +64,6 @@ function App() {
     return () => {
       isActive = false;
 
-      // 🧹 cleanup realtime subscription
       if (subscription) {
         subscription.unsubscribe();
       }
@@ -70,46 +71,79 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Navbar />
-      <ScrollToHash />
+    <ErrorBoundary>
+      <BrowserRouter>
+        <Navbar />
+        <ScrollToHash />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              products={productState.products}
-              isLoading={productState.isLoading}
+        <Suspense fallback={<p className="route-loading">Loading page...</p>}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  products={productState.products}
+                  isLoading={productState.isLoading}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/essentials"
-          element={
-            <Essentials
-              products={productState.products}
-              isLoading={productState.isLoading}
-              productError={productState.error}
-              productSource={productState.source}
+            <Route
+              path="/essentials"
+              element={
+                <Essentials
+                  products={productState.products}
+                  isLoading={productState.isLoading}
+                  productError={productState.error}
+                  productSource={productState.source}
+                />
+              }
             />
-          }
-        />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/purchase" element={<Contact />} />
-        <Route
-          path="/product/:slug"
-          element={
-            <ProductDetails
-              products={productState.products}
-              isLoading={productState.isLoading}
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/purchase" element={<Contact />} />
+            <Route
+              path="/product/:slug"
+              element={
+                <ProductDetails
+                  products={productState.products}
+                  isLoading={productState.isLoading}
+                />
+              }
             />
-          }
-        />
-      </Routes>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
 
-      <Footer />
-    </BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    </ErrorBoundary>
+  );
+}
+
+function mergeRealtimeProduct(products, payload) {
+  if (!payload?.eventType) {
+    return products;
+  }
+
+  if (payload.eventType === "DELETE") {
+    return products.filter((product) => product.id !== payload.old?.id);
+  }
+
+  const [updatedProduct] = normalizeProducts([payload.new]);
+
+  if (!updatedProduct) {
+    return products;
+  }
+
+  const exists = products.some((product) => product.id === updatedProduct.id);
+
+  if (!exists) {
+    return [updatedProduct, ...products];
+  }
+
+  return products.map((product) =>
+    product.id === updatedProduct.id
+      ? { ...product, ...updatedProduct }
+      : product,
   );
 }
 

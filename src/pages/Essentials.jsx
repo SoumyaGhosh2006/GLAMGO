@@ -1,5 +1,6 @@
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
+import { formatPrice } from "../config/site";
 import "../styles/essentials.css";
 
 function Essentials({
@@ -59,22 +60,12 @@ function Essentials({
 
   return (
     <main className="essentials-page">
-      <Helmet>
-        <title>Essentials | GLAMGO</title>
-        <meta
-          name="description"
-          content="Explore GLAMGO essentials including vests, tees, track pants, and innerwear."
-        />
+      <Seo
+        title="Essentials | GLAMGO"
+        description="Explore GLAMGO essentials including vests, round neck tees, track pants, bermuda shorts, and innerwear."
+        path="/essentials"
+      />
 
-        {/* Open Graph */}
-        <meta property="og:title" content="GLAMGO Essentials Collection" />
-        <meta
-          property="og:description"
-          content="Browse premium everyday essentials."
-        />
-        <meta property="og:image" content="/preview.jpg" />
-        <meta property="og:type" content="website" />
-      </Helmet>
       <section className="essentials-header">
         <h1>Everyday Essentials</h1>
         <p>
@@ -135,41 +126,47 @@ function Essentials({
                     <p>{section.description}</p>
                   </div>
 
-                  <div className="essentials-grid">
-                    {sectionProducts.map((product) => (
-                      <article key={product.id} className="product-card">
-                        <Link
-                          to={`/product/${product.slug}`}
-                          className="product-card-link"
-                        >
-                          <img
-                            src={product.image}
-                            alt={product.name}
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        </Link>
-
-                        <div className="product-card-body">
-                          <h3>{product.name}</h3>
-                          <p>{product.description}</p>
-                          <strong className="product-price">
-                            ₹{product.price}
-                          </strong>
-                          <span>{product.fabric}</span>
-                        </div>
-
-                        <div className="product-card-actions">
+                  {sectionProducts.length ? (
+                    <div className="essentials-grid">
+                      {sectionProducts.map((product) => (
+                        <article key={product.id} className="product-card">
                           <Link
                             to={`/product/${product.slug}`}
-                            className="product-action detail"
+                            className="product-card-link"
                           >
-                            View Details
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              loading="lazy"
+                              decoding="async"
+                            />
                           </Link>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
+
+                          <div className="product-card-body">
+                            <h3>{product.name}</h3>
+                            <p>{product.description}</p>
+                            <strong className="product-price">
+                              {formatPrice(product.price)}
+                            </strong>
+                            <span>{product.fabric}</span>
+                          </div>
+
+                          <div className="product-card-actions">
+                            <Link
+                              to={`/product/${product.slug}`}
+                              className="product-action detail"
+                            >
+                              View Details
+                            </Link>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="products-state section-empty">
+                      Products for this section will be updated soon.
+                    </p>
+                  )}
                 </section>
               );
             })}

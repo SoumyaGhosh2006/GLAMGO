@@ -1,7 +1,7 @@
 .navbar {
   position: relative;
-  background: linear-gradient(135deg, #efe4cc 0%, #e7d9bc 55%, #efe4cc 100%) !important;
-  box-shadow: 0 4px 20px rgba(44, 38, 28, 0.08) !important;
+  background: linear-gradient(135deg, #efe4cc 0%, #e7d9bc 55%, #efe4cc 100%);
+  box-shadow: 0 4px 20px rgba(44, 38, 28, 0.08);
   padding: 10px 0;
   border-bottom: 1px solid rgba(65, 54, 32, 0.12);
 }
@@ -17,13 +17,14 @@
 }
 
 .navbar-container {
-  max-width: 1360px !important;
-  padding-left: 26px !important;
-  padding-right: 26px !important;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding-left: 26px;
+  padding-right: 26px;
 }
 
 .navbar-toolbar {
-  min-height: 98px !important;
+  min-height: 98px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -65,7 +66,7 @@
 }
 
 .navbar-links {
-  display: flex !important;
+  display: flex;
   align-items: center;
   margin-left: auto;
 }
@@ -118,30 +119,33 @@
 
 
 .purchase-btn {
-  background: linear-gradient(135deg, #006d77 0%, #0a7f8a 100%) !important;
-  color: white !important;
-  text-transform: none !important;
-  font-size: 15px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.2px !important;
-  padding: 11px 22px !important;
-  border-radius: 12px !important;
-  box-shadow: 0 8px 16px rgba(0, 109, 119, 0.25) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: linear-gradient(135deg, #006d77 0%, #0a7f8a 100%);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  padding: 11px 22px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 109, 119, 0.25);
 }
 
 .purchase-btn:hover {
-  background: linear-gradient(135deg, #005c66 0%, #08717b 100%) !important;
-  box-shadow: 0 10px 18px rgba(0, 109, 119, 0.32) !important;
+  background: linear-gradient(135deg, #005c66 0%, #08717b 100%);
+  box-shadow: 0 10px 18px rgba(0, 109, 119, 0.32);
 }
 
 @media (max-width: 600px) {
   .navbar-container {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .navbar-toolbar {
-    min-height: 84px !important;
+    min-height: 84px;
   }
 
   .navbar-links {

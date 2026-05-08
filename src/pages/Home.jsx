@@ -1,13 +1,14 @@
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
+import { absoluteUrl, formatPrice, siteMeta } from "../config/site";
 import "../styles/home.css";
 
-import vestImg from "../assets/collections/Vest.png";
-import tshirtImg from "../assets/collections/TShirt.png";
-import bermudaImg from "../assets/collections/Buddy Mercerised Printed Bermuda.png";
-import trackpantsImg from "../assets/collections/Track Pant.png";
-import boxerImg from "../assets/collections/Boxer.png";
-import rosyPantyImg from "../assets/collections/Rosy Panty.jpeg";
+import vestImg from "../assets/optimized/collections/Vest.jpg";
+import tshirtImg from "../assets/optimized/collections/TShirt.jpg";
+import bermudaImg from "../assets/optimized/collections/Buddy Mercerised Printed Bermuda.jpg";
+import trackpantsImg from "../assets/optimized/collections/Track Pant.jpg";
+import boxerImg from "../assets/optimized/collections/Boxer.jpg";
+import rosyPantyImg from "../assets/optimized/collections/Rosy Panty.jpg";
 import whyChooseUsImg from "../assets/why_choose_us.png";
 
 function Home({ products = [], isLoading = false }) {
@@ -28,7 +29,7 @@ function Home({ products = [], isLoading = false }) {
       number: "02",
       title: "Feel",
       description:
-        "Comfort isn't a feature — it's the foundation. Softness, breathability, and fit come first.",
+        "Comfort is not a feature - it is the foundation. Softness, breathability, and fit come first.",
     },
     {
       number: "03",
@@ -41,7 +42,7 @@ function Home({ products = [], isLoading = false }) {
   const aboutStats = [
     { value: "3", label: "Core categories" },
     { value: "100%", label: "Quality supervised" },
-    { value: "∞", label: "Style possibilities" },
+    { value: "All", label: "Style possibilities" },
   ];
 
   const collections = [
@@ -91,7 +92,7 @@ function Home({ products = [], isLoading = false }) {
 
   const collectionCards = collections.map((collection) => {
     const matchingProducts = products.filter((product) =>
-      collection.categories.includes(product.category)
+      collection.categories.includes(product.category),
     );
 
     const validPrices = matchingProducts
@@ -112,51 +113,32 @@ function Home({ products = [], isLoading = false }) {
 
   return (
     <>
-      <Helmet>
-        <title>GLAMGO | Premium Innerwear & Essentials</title>
-
-        <meta
-          name="description"
-          content="GLAMGO offers premium undergarments, sportswear, vests, track pants, and essentials crafted for comfort, durability, and modern style."
-        />
-
+      <Seo
+        title="GLAMGO | Premium Innerwear & Everyday Essentials"
+        description="GLAMGO offers premium innerwear, sportswear, vests, track pants, and everyday essentials crafted for comfort, durability, and modern style."
+        path="/"
+      >
         <meta
           name="keywords"
           content="GLAMGO, premium innerwear, sportswear, vest, track pant, undergarments, essentials"
         />
-
-        <meta name="author" content="GLAMGO" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="GLAMGO Premium Wear" />
-
-        <meta
-          property="og:description"
-          content="Premium undergarments, sportswear, and essentials by GLAMGO."
-        />
-
-        <meta property="og:image" content="/preview.jpg" />
-
-        <meta property="og:type" content="website" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-
-        <meta name="twitter:title" content="GLAMGO Premium Wear" />
-
-        <meta
-          name="twitter:description"
-          content="Premium undergarments, sportswear, and essentials."
-        />
-
-        <meta name="twitter:image" content="/preview.jpg" />
-
-        {/* Canonical */}
-        <link
-          rel="canonical"
-          href="https://your-site.netlify.app/"
-        />
-      </Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: siteMeta.name,
+            url: siteMeta.url,
+            logo: absoluteUrl("/logo1.png"),
+            contactPoint: {
+              "@type": "ContactPoint",
+              email: siteMeta.email,
+              contactType: "sales",
+              areaServed: "IN",
+              availableLanguage: ["en"],
+            },
+          })}
+        </script>
+      </Seo>
 
       <main className="home-page">
         <section className="home-hero">
@@ -249,7 +231,7 @@ function Home({ products = [], isLoading = false }) {
 
                       {item.price ? (
                         <strong className="collection-price">
-                          From ₹{item.price}
+                          From {formatPrice(item.price)}
                         </strong>
                       ) : null}
                     </div>
@@ -356,7 +338,7 @@ function Home({ products = [], isLoading = false }) {
               </div>
 
               <Link to="/essentials" className="about-link">
-                Explore the range ↗
+                Explore the range
               </Link>
             </div>
 

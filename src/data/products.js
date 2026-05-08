@@ -1,21 +1,22 @@
-import boxerImg from "../assets/collections/Boxer.png";
-import buddyBermudaImg from "../assets/collections/Buddy Mercerised Printed Bermuda.png";
-import cutBriefImg from "../assets/collections/Cut Brief.png";
-import interlockDrawerImg from "../assets/collections/Interlock Drawer.png";
-import interlockPocketDrawerImg from "../assets/collections/Interlock Pocket Drawer.png";
-import longTrunkImg from "../assets/collections/Long Trunk.png";
-import lumiPantyImg from "../assets/collections/Lumi Panty.jpeg";
-import miniTrunkImg from "../assets/collections/Mini Trunk.png";
-import mojoTshirtImg from "../assets/collections/mojo T-Shirt.png";
-import rosyPantyImg from "../assets/collections/Rosy Panty.jpeg";
-import slipsImg from "../assets/collections/Slips.png";
-import trackPantImg from "../assets/collections/Track Pant.png";
-import tshirtImg from "../assets/collections/TShirt.png";
-import vestImg from "../assets/collections/Vest.png";
+import boxerImg from "../assets/optimized/collections/Boxer.jpg";
+import buddyBermudaImg from "../assets/optimized/collections/Buddy Mercerised Printed Bermuda.jpg";
+import cutBriefImg from "../assets/optimized/collections/Cut Brief.jpg";
+import interlockDrawerImg from "../assets/optimized/collections/Interlock Drawer.jpg";
+import interlockPocketDrawerImg from "../assets/optimized/collections/Interlock Pocket Drawer.jpg";
+import longTrunkImg from "../assets/optimized/collections/Long Trunk.jpg";
+import lumiPantyImg from "../assets/optimized/collections/Lumi Panty.jpg";
+import miniTrunkImg from "../assets/optimized/collections/Mini Trunk.jpg";
+import mojoTshirtImg from "../assets/optimized/collections/mojo T-Shirt.jpg";
+import rosyPantyImg from "../assets/optimized/collections/Rosy Panty.jpg";
+import slipsImg from "../assets/optimized/collections/Slips.jpg";
+import trackPantImg from "../assets/optimized/collections/Track Pant.jpg";
+import tshirtImg from "../assets/optimized/collections/TShirt.jpg";
+import vestImg from "../assets/optimized/collections/Vest.jpg";
 
 export const products = [
   {
     id: "vest-001",
+    slug: "classic-vest",
     name: "Classic Vest",
     price: 499,
     image: vestImg,
@@ -26,6 +27,7 @@ export const products = [
   },
   {
     id: "tshirt-001",
+    slug: "essential-t-shirt",
     name: "Essential T-Shirt",
     price: 799,
     image: tshirtImg,
@@ -36,6 +38,7 @@ export const products = [
   },
   {
     id: "mojo-tshirt-001",
+    slug: "mojo-t-shirt",
     name: "Mojo T-Shirt",
     price: 899,
     image: mojoTshirtImg,
@@ -46,6 +49,7 @@ export const products = [
   },
   {
     id: "bermuda-001",
+    slug: "buddy-mercerised-printed-bermuda",
     name: "Buddy Mercerised Printed Bermuda",
     price: 999,
     image: buddyBermudaImg,
@@ -56,6 +60,7 @@ export const products = [
   },
   {
     id: "track-pant-001",
+    slug: "track-pant",
     name: "Track Pant",
     price: 1199,
     image: trackPantImg,
@@ -66,6 +71,7 @@ export const products = [
   },
   {
     id: "boxer-001",
+    slug: "comfort-boxer",
     name: "Comfort Boxer",
     price: 549,
     image: boxerImg,
@@ -76,6 +82,7 @@ export const products = [
   },
   {
     id: "cut-brief-001",
+    slug: "cut-brief",
     name: "Cut Brief",
     price: 399,
     image: cutBriefImg,
@@ -86,6 +93,7 @@ export const products = [
   },
   {
     id: "slips-001",
+    slug: "classic-slips",
     name: "Classic Slips",
     price: 379,
     image: slipsImg,
@@ -96,6 +104,7 @@ export const products = [
   },
   {
     id: "long-trunk-001",
+    slug: "long-trunk",
     name: "Long Trunk",
     price: 599,
     image: longTrunkImg,
@@ -106,6 +115,7 @@ export const products = [
   },
   {
     id: "mini-trunk-001",
+    slug: "mini-trunk",
     name: "Mini Trunk",
     price: 549,
     image: miniTrunkImg,
@@ -116,6 +126,7 @@ export const products = [
   },
   {
     id: "interlock-drawer-001",
+    slug: "interlock-drawer",
     name: "Interlock Drawer",
     price: 649,
     image: interlockDrawerImg,
@@ -126,6 +137,7 @@ export const products = [
   },
   {
     id: "interlock-pocket-drawer-001",
+    slug: "interlock-pocket-drawer",
     name: "Interlock Pocket Drawer",
     price: 699,
     image: interlockPocketDrawerImg,
@@ -136,6 +148,7 @@ export const products = [
   },
   {
     id: "lumi-panty-001",
+    slug: "lumi-panty",
     name: "Lumi Panty",
     price: 329,
     image: lumiPantyImg,
@@ -146,6 +159,7 @@ export const products = [
   },
   {
     id: "rosy-panty-001",
+    slug: "rosy-panty",
     name: "Rosy Panty",
     price: 329,
     image: rosyPantyImg,
@@ -156,7 +170,8 @@ export const products = [
   },
 
   {
-    id: "Slips-001",
+    id: "panty-slips-001",
+    slug: "slips",
     name: "Slips",
     price: 329,
     image: slipsImg,
@@ -164,5 +179,5 @@ export const products = [
     description: "A lightweight panty style designed for comfort throughout the day.",
     fabric: "Soft Stretch Knit",
     sizes: ["M", "L", "XL"],
-  }
-];  
+  },
+];
