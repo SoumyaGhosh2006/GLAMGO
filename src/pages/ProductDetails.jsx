@@ -30,8 +30,6 @@ function ProductDetails({ products = [], isLoading = false }) {
 
   return (
     <main className="product-details">
-      
-      {/* 🔥 SEO + Open Graph */}
       <Helmet>
         <title>{product.name} | GLAMGO</title>
 
@@ -40,17 +38,47 @@ function ProductDetails({ products = [], isLoading = false }) {
           content={`${product.name} for ₹${product.price}. Premium comfort and quality by GLAMGO.`}
         />
 
-        {/* Open Graph */}
         <meta property="og:title" content={`${product.name} | GLAMGO`} />
+
         <meta
           property="og:description"
           content={`${product.name} available for ₹${product.price}.`}
         />
+
         <meta property="og:image" content={product.image} />
+
         <meta property="og:type" content="product" />
 
-        {/* 🔥 EXTRA SEO (important) */}
-        <meta name="robots" content="index, follow" />
+        {/* 🔥 STRUCTURED DATA */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+
+            name: product.name,
+
+            image: [product.image],
+
+            description: product.description,
+
+            brand: {
+              "@type": "Brand",
+              name: "GLAMGO",
+            },
+
+            offers: {
+              "@type": "Offer",
+
+              priceCurrency: "INR",
+
+              price: product.price,
+
+              availability: "https://schema.org/InStock",
+
+              url: `https://your-site.netlify.app/product/${product.slug}`,
+            },
+          })}
+        </script>
       </Helmet>
 
       <div className="product-container">
