@@ -5,22 +5,20 @@ import { absoluteUrl, siteMeta } from "../config/site";
 import { contactInfo } from "../data/companyInfo";
 import "../styles/contact.css";
 
-function buildGmailComposeUrl({ to, subject = "", body = "" }) {
-  const params = new URLSearchParams({
-    view: "cm",
-    fs: "1",
-    to,
-  });
+function buildMailtoUrl({ to, subject = "", body = "" }) {
+  const params = new URLSearchParams();
 
   if (subject) {
-    params.set("su", subject);
+    params.set("subject", subject);
   }
 
   if (body) {
     params.set("body", body);
   }
 
-  return `https://mail.google.com/mail/?${params.toString()}`;
+  const query = params.toString();
+
+  return `mailto:${encodeURIComponent(to)}${query ? `?${query}` : ""}`;
 }
 
 function Contact() {
@@ -39,7 +37,7 @@ function Contact() {
     message: "",
   });
   const primaryPhone = contactInfo.phones[0].replace(/\s+/g, "");
-  const emailUsUrl = buildGmailComposeUrl({ to: contactInfo.email });
+  const emailUsUrl = buildMailtoUrl({ to: contactInfo.email });
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -69,24 +67,25 @@ function Contact() {
       return;
     }
 
-    const gmailBody = [
-      
+    const emailBody = [
       requestedProduct ? `Product: ${requestedProduct}` : null,
       "",
-      
+      `Name: ${trimmedName}`,
+      `Email: ${trimmedEmail}`,
+      "",
       trimmedMessage,
     ]
       .filter(Boolean)
       .join("\n");
 
-    const gmailComposeUrl = buildGmailComposeUrl({
+    const mailtoUrl = buildMailtoUrl({
       to: contactInfo.email,
       subject: trimmedSubject,
-      body: gmailBody,
+      body: emailBody,
     });
 
-    setStatusMessage("Opening Gmail with your drafted message.");
-    window.open(gmailComposeUrl, "_blank", "noopener,noreferrer");
+    setStatusMessage("Opening your email app with a drafted message.");
+    window.location.href = mailtoUrl;
   }
 
   return (
@@ -142,8 +141,6 @@ function Contact() {
               <a
                 className="contact-action-link"
                 href={emailUsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 {contactInfo.email}
               </a>
@@ -161,8 +158,6 @@ function Contact() {
                 <a
                   className="contact-quick-btn primary"
                   href={emailUsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   Email Us
                 </a>
