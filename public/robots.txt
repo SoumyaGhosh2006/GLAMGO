@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://glamgo.vercel.app/sitemap.xml
+Sitemap: https://glamgo-theta.vercel.app/sitemap.xml

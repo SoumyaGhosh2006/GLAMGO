@@ -48,7 +48,7 @@ npm run dev
 The app reads these client-side environment variables:
 
 ```bash
-VITE_SITE_URL=https://glamgo.vercel.app
+VITE_SITE_URL=https://glamgo-theta.vercel.app
 VITE_SUPABASE_URL=
 VITE_SUPABASE_ANON_KEY=
 ```

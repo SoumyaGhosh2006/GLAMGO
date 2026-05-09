@@ -3,7 +3,7 @@ export const siteMeta = {
   title: "GLAMGO | Premium Innerwear & Everyday Essentials",
   description:
     "GLAMGO manufactures premium innerwear, sportswear, vests, track pants, and everyday essentials with comfort-first construction and dependable quality.",
-  url: (import.meta.env.VITE_SITE_URL || "https://glamgo.vercel.app").replace(
+  url: (import.meta.env.VITE_SITE_URL || "https://glamgo-theta.vercel.app").replace(
     /\/+$/,
     "",
   ),
