@@ -12,6 +12,10 @@ import slipsImg from "../assets/optimized/collections/Slips.jpg";
 import trackPantImg from "../assets/optimized/collections/Track Pant.jpg";
 import tshirtImg from "../assets/optimized/collections/TShirt.jpg";
 import vestImg from "../assets/optimized/collections/Vest.jpg";
+import {
+  EXTENDED_EIGHT_SIZES,
+  STANDARD_SIX_SIZES,
+} from "../config/productSizeCharts";
 
 export const products = [
   {
@@ -23,7 +27,7 @@ export const products = [
     category: "Vests",
     description: "A breathable everyday vest built for easy comfort and movement.",
     fabric: "Cotton Knit",
-    sizes: ["S", "M", "L", "XL"],
+    sizes: STANDARD_SIX_SIZES,
   },
   {
     id: "tshirt-001",
@@ -34,7 +38,7 @@ export const products = [
     category: "T-Shirts",
     description: "A clean everyday tee with a soft hand feel and versatile fit.",
     fabric: "Cotton Blend",
-    sizes: ["S", "M", "L", "XL"],
+    sizes: STANDARD_SIX_SIZES,
   },
   {
     id: "mojo-tshirt-001",
@@ -45,7 +49,7 @@ export const products = [
     category: "T-Shirts",
     description: "A casual statement tee made for relaxed, all-day wear.",
     fabric: "Cotton Jersey",
-    sizes: ["S", "M", "L", "XL"],
+    sizes: STANDARD_SIX_SIZES,
   },
   {
     id: "bermuda-001",
@@ -56,7 +60,7 @@ export const products = [
     category: "Bermuda",
     description: "Lightweight printed bermuda shorts with a laid-back summer look.",
     fabric: "Mercerised Cotton Blend",
-    sizes: ["S", "M", "L", "XL"],
+    sizes: EXTENDED_EIGHT_SIZES,
   },
   {
     id: "track-pant-001",
@@ -67,7 +71,7 @@ export const products = [
     category: "Track Pants",
     description: "An easy-moving track pant designed for comfort through the day.",
     fabric: "Poly-Cotton Blend",
-    sizes: ["S", "M", "L", "XL"],
+    sizes: EXTENDED_EIGHT_SIZES,
   },
   {
     id: "boxer-001",
@@ -78,7 +82,7 @@ export const products = [
     category: "Innerwear",
     description: "Relaxed-fit boxer shorts with soft structure and easy wear.",
     fabric: "Cotton Blend",
-    sizes: ["S", "M", "L", "XL"],
+    sizes: EXTENDED_EIGHT_SIZES,
   },
   {
     id: "cut-brief-001",
@@ -89,7 +93,7 @@ export const products = [
     category: "Innerwear",
     description: "Supportive daily brief with a streamlined shape and soft finish.",
     fabric: "Stretch Cotton",
-    sizes: ["S", "M", "L", "XL"],
+    sizes: EXTENDED_EIGHT_SIZES,
   },
   {
     id: "slips-001",
@@ -100,7 +104,7 @@ export const products = [
     category: "Girls Innerwear",
     description: "An everyday slip style made for close comfort and flexibility.",
     fabric: "Cotton Rib",
-    sizes: ["S", "M", "L", "XL"],
+    sizes: STANDARD_SIX_SIZES,
   },
   {
     id: "long-trunk-001",
@@ -111,7 +115,7 @@ export const products = [
     category: "Innerwear",
     description: "Long trunk innerwear with extra coverage and a secure feel.",
     fabric: "Cotton Stretch",
-    sizes: ["S", "M", "L", "XL"],
+    sizes: EXTENDED_EIGHT_SIZES,
   },
   {
     id: "mini-trunk-001",
@@ -122,7 +126,7 @@ export const products = [
     category: "Innerwear",
     description: "A compact trunk silhouette that balances support and movement.",
     fabric: "Cotton Stretch",
-    sizes: ["S", "M", "L", "XL"],
+    sizes: EXTENDED_EIGHT_SIZES,
   },
   {
     id: "interlock-drawer-001",
@@ -133,7 +137,7 @@ export const products = [
     category: "Innerwear",
     description: "A soft interlock drawer style suited for everyday comfort.",
     fabric: "Interlock Cotton",
-    sizes: ["S", "M", "L", "XL"],
+    sizes: EXTENDED_EIGHT_SIZES,
   },
   {
     id: "interlock-pocket-drawer-001",
@@ -144,7 +148,7 @@ export const products = [
     category: "Innerwear",
     description: "A practical drawer style with interlock softness and added utility.",
     fabric: "Interlock Cotton",
-    sizes: ["S", "M", "L", "XL"],
+    sizes: EXTENDED_EIGHT_SIZES,
   },
   {
     id: "lumi-panty-001",
@@ -155,7 +159,7 @@ export const products = [
     category: "Panties",
     description: "A soft everyday panty with a smooth feel and comfortable fit.",
     fabric: "Soft Stretch Knit",
-    sizes: ["M", "L", "XL"],
+    sizes: STANDARD_SIX_SIZES,
   },
   {
     id: "rosy-panty-001",
@@ -166,7 +170,7 @@ export const products = [
     category: "Panties",
     description: "A lightweight panty style designed for comfort throughout the day.",
     fabric: "Soft Stretch Knit",
-    sizes: ["M", "L", "XL"],
+    sizes: STANDARD_SIX_SIZES,
   },
 
   {
@@ -178,6 +182,6 @@ export const products = [
     category: "Panties",
     description: "A lightweight panty style designed for comfort throughout the day.",
     fabric: "Soft Stretch Knit",
-    sizes: ["M", "L", "XL"],
+    sizes: STANDARD_SIX_SIZES,
   },
 ];

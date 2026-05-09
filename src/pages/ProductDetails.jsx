@@ -1,5 +1,7 @@
 import { Link, useParams } from "react-router-dom";
+import ProductSizeChart from "../components/ProductSizeChart";
 import Seo from "../components/Seo";
+import { getProductSizeChart } from "../config/productSizeCharts";
 import { absoluteUrl, canonicalUrl, formatPrice } from "../config/site";
 import "../styles/productDetails.css";
 
@@ -48,6 +50,7 @@ function ProductDetails({ products = [], isLoading = false }) {
 
   const productUrl = canonicalUrl(`/product/${product.slug}`);
   const productDescription = `${product.name} by GLAMGO. ${product.description}`;
+  const sizeChart = getProductSizeChart(product);
 
   return (
     <main className="product-details">
@@ -99,6 +102,8 @@ function ProductDetails({ products = [], isLoading = false }) {
           <p className="fabric">
             <strong>Fabric:</strong> {product.fabric}
           </p>
+
+          <ProductSizeChart productName={product.name} chart={sizeChart} />
 
           <div className="sizes">
             <h4>Available Sizes</h4>
