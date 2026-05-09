@@ -51,6 +51,7 @@
 .contact-copy p {
   color: var(--text-muted);
   max-width: 690px;
+  font-size: 1rem;
 }
 
 .contact-product-pill {
@@ -93,6 +94,53 @@
   text-decoration: none;
 }
 
+.contact-action-link {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(105, 84, 49, 0.12);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.contact-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.contact-quick-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-quick-btn:hover,
+.write-form button:hover,
+.map-link:hover {
+  transform: translateY(-1px);
+}
+
+.contact-quick-btn.primary {
+  background: linear-gradient(135deg, #006d77 0%, #0a7f8a 100%);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(0, 109, 119, 0.22);
+}
+
+.contact-quick-btn.secondary {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(92, 74, 44, 0.18);
+  color: var(--text-main);
+}
+
 .contact-info-card a:hover,
 .map-link:hover {
   color: var(--accent-dark);
@@ -127,6 +175,14 @@
   font: inherit;
   padding: 16px 18px;
   outline: none;
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.write-form input:focus,
+.write-form textarea:focus {
+  border-color: rgba(0, 109, 119, 0.35);
+  box-shadow: 0 0 0 4px rgba(0, 109, 119, 0.1);
 }
 
 .write-form textarea {
@@ -136,19 +192,18 @@
 
 .write-form button {
   width: fit-content;
+  min-width: 190px;
+  min-height: 56px;
   border: none;
   border-radius: 999px;
   background: linear-gradient(135deg, #ffbf1f 0%, #ffb000 100%);
   color: #fff;
   font: inherit;
   font-weight: 700;
+  font-size: 1.05rem;
   padding: 14px 24px;
   cursor: pointer;
   box-shadow: 0 10px 22px rgba(255, 176, 0, 0.28);
-}
-
-.write-form button:hover {
-  transform: translateY(-1px);
 }
 
 .form-status {
@@ -204,6 +259,11 @@
   .contact-shell {
     grid-template-columns: 1fr;
   }
+
+  .contact-copy h1,
+  .map-section-head h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+  }
 }
 
 @media (max-width: 680px) {
@@ -227,6 +287,28 @@
     padding: 16px;
   }
 
+  .contact-info-card {
+    padding: 18px 16px;
+  }
+
+  .contact-info-card h3 {
+    font-size: 1.28rem;
+  }
+
+  .contact-quick-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .write-form {
+    gap: 14px;
+  }
+
+  .write-form input,
+  .write-form textarea {
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+
   .map-section-head {
     align-items: flex-start;
   }
@@ -234,6 +316,11 @@
   .map-link,
   .write-form button {
     width: 100%;
+  }
+
+  .write-form button,
+  .contact-quick-btn {
+    min-height: 52px;
   }
 
   .map-frame-wrap iframe {

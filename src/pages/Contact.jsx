@@ -5,6 +5,24 @@ import { absoluteUrl, siteMeta } from "../config/site";
 import { contactInfo } from "../data/companyInfo";
 import "../styles/contact.css";
 
+function buildGmailComposeUrl({ to, subject = "", body = "" }) {
+  const params = new URLSearchParams({
+    view: "cm",
+    fs: "1",
+    to,
+  });
+
+  if (subject) {
+    params.set("su", subject);
+  }
+
+  if (body) {
+    params.set("body", body);
+  }
+
+  return `https://mail.google.com/mail/?${params.toString()}`;
+}
+
 function Contact() {
   const { pathname } = useLocation();
   const [searchParams] = useSearchParams();
@@ -20,6 +38,8 @@ function Contact() {
     subject: "",
     message: "",
   });
+  const primaryPhone = contactInfo.phones[0].replace(/\s+/g, "");
+  const emailUsUrl = buildGmailComposeUrl({ to: contactInfo.email });
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -49,17 +69,24 @@ function Contact() {
       return;
     }
 
-    const mailSubject = encodeURIComponent(trimmedSubject);
-    const mailBody = encodeURIComponent(
-      `Name: ${trimmedName}\nEmail: ${trimmedEmail}\n${
-        requestedProduct ? `Product: ${requestedProduct}\n` : ""
-      }\nMessage:\n${trimmedMessage}`,
-    );
+    const gmailBody = [
+      
+      requestedProduct ? `Product: ${requestedProduct}` : null,
+      "",
+      
+      trimmedMessage,
+    ]
+      .filter(Boolean)
+      .join("\n");
 
-    setStatusMessage("Opening your email app with the message details.");
-    window.location.assign(
-      `mailto:${contactInfo.email}?subject=${mailSubject}&body=${mailBody}`,
-    );
+    const gmailComposeUrl = buildGmailComposeUrl({
+      to: contactInfo.email,
+      subject: trimmedSubject,
+      body: gmailBody,
+    });
+
+    setStatusMessage("Opening Gmail with your drafted message.");
+    window.open(gmailComposeUrl, "_blank", "noopener,noreferrer");
   }
 
   return (
@@ -112,12 +139,40 @@ function Contact() {
           <aside className="contact-side-panel">
             <div className="contact-info-card">
               <h3>Contact Details</h3>
-              <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+              <a
+                className="contact-action-link"
+                href={emailUsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {contactInfo.email}
+              </a>
               {contactInfo.phones.map((phone) => (
-                <a key={phone} href={`tel:${phone.replace(/\s+/g, "")}`}>
+                <a
+                  key={phone}
+                  className="contact-action-link"
+                  href={`tel:${phone.replace(/\s+/g, "")}`}
+                >
                   {phone}
                 </a>
               ))}
+
+              <div className="contact-quick-actions">
+                <a
+                  className="contact-quick-btn primary"
+                  href={emailUsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Email Us
+                </a>
+                <a
+                  className="contact-quick-btn secondary"
+                  href={`tel:${primaryPhone}`}
+                >
+                  Call Now
+                </a>
+              </div>
             </div>
 
             <div className="contact-info-card">
@@ -142,6 +197,7 @@ function Contact() {
               value={formData.name}
               onChange={handleChange}
               autoComplete="name"
+              enterKeyHint="next"
               maxLength={80}
               required
             />
@@ -152,6 +208,8 @@ function Contact() {
               value={formData.email}
               onChange={handleChange}
               autoComplete="email"
+              inputMode="email"
+              enterKeyHint="next"
               maxLength={120}
               required
             />
@@ -161,6 +219,7 @@ function Contact() {
               placeholder="Enter Subject"
               value={subjectEdited ? formData.subject : suggestedSubject}
               onChange={handleChange}
+              enterKeyHint="next"
               maxLength={140}
               required
             />
@@ -170,6 +229,7 @@ function Contact() {
               value={formData.message}
               onChange={handleChange}
               rows="5"
+              enterKeyHint="send"
               maxLength={1200}
               required
             />
